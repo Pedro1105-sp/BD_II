@@ -1,0 +1,64 @@
+# ATIVIDADE 3
+
+# SELECIONA (HABILITAR - ATIVAR) O BANCO DE DADOS: 
+USE sistema_pedidos;
+
+#DESCRIÇÃO DA TABELA tbl_prod:
+DESCRIBE tbl_prod;
+
+# SELEÇÃO DE DADOS DE UMA FAIXA DE PREÇO DE "MAIOR OU IGUAL E MENOR OU IGUAL" DA TABELA tbl_prod:
+SELECT * 
+FROM tbl_prod
+WHERE  # WHERE FILTRO PARA DETERMINAR A AÇÃO DO COMANDO  -> TRAVA DE SEGURANÇA;
+preco >=  35.00 AND  preco <= 40.00;
+
+# SELEÇÃO DE DADOS DE UMA FAIXA DE PREÇO, USANDO BETWEEN -> ENTRE DA TABELA tbl_prod:
+SELECT * 
+FROM tbl_prod
+WHERE preco 
+BETWEEN 35.00 AND 40.00;
+
+# SELEÇÃO DE DADOS DE PRODUTOS, USANDO LIKE ENTRE DA TABELA tbl_prod:
+SELECT *
+FROM tbl_prod
+WHERE nome LIKE '%O'
+ORDER BY cod_prod ASC; # ORDER BY ASC -> ORDEM CRESCENTE
+
+# SELEÇÃO DE DADOS DE PRODUTOS, USANDO LIKE ENTRE DA TABELA tbl_prod:
+SELECT *
+FROM tbl_prod
+WHERE nome LIKE '%G_'  # PENULTIMA LETRA G
+ORDER BY cod_prod ASC; # ORDER BY ASC -> ORDEM CRESCENTE
+
+# SELEÇÃO DE DADOS DE PRODUTOS, USANDO LIKE ENTRE DA TABELA tbl_prod:
+SELECT *
+FROM tbl_prod
+WHERE nome LIKE '%U_'  # PENULTIMA LETRA U
+ORDER BY cod_prod DESC; # ORDER BY DESC -> ORDEM DECRESCENTE
+
+# SELEÇÃO DE DADOS DE PRODUTOS, USANDO LIKE ENTRE DA TABELA tbl_prod:
+SELECT *
+FROM tbl_prod
+WHERE nome LIKE '%M'
+ORDER BY cod_prod DESC; # ORDER BY DESC -> ORDEM DECRESCENTE
+
+# SELEÇÃO DE DADOS, USANDO INNER JOIN ENTRE DA TABELA tbl_prod:
+SELECT *
+FROM tbl_pedido
+INNER JOIN tbl_iten_pedido
+ON tbl_pedido.data_pedido = tbl_iten_pedido.cod_ped;
+
+
+# DESAFIO
+
+SELECT *
+FROM tbl_iten_pedido
+INNER JOIN tbl_prod
+ON tbl_prod.nome = tbl_iten_pedido.cod_prod
+INNER JOIN tbl_pedido
+ON tbl_pedido.data_pedido = tbl_iten_pedido.cod_ped;
+
+
+
+
+
